@@ -1,25 +1,38 @@
 package junit;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class firstJunitTest {
 
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Это метод @beforeAll");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Это метод @afterAll");
+    }
+
     @BeforeEach
     void beforeEach() {
-        System.out.println("    Р­С‚Рѕ РјРµС‚РѕРґ @BeforeEach");
+        System.out.println("    Это метод @BeforeEach");
     }
 
     @AfterEach
     void afterEach() {
-        System.out.println("    Р­С‚Рѕ РјРµС‚РѕРґ @AfterEach");
+        System.out.println("    Это метод @AfterEach");
     }
 
     @Test
     void firstTest() {
-        System.out.println("        Р­С‚Рѕ С‚РµСЃС‚");
+        System.out.println("        Это firstTest");
+        Assertions.assertTrue(3 > 2);
+    }
+
+    @Test
+    void secondTest() {
+        System.out.println("        Это secondTest");
         Assertions.assertTrue(3 > 2);
     }
 }
