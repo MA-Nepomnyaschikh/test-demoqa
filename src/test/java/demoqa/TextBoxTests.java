@@ -21,7 +21,7 @@ public class TextBoxTests {
     @Test
     void fillFormTest() {
         open("/text-box");
-        $(".main-header").shouldHave(text("Text Box"));
+        $(".text-center").shouldHave(text("Text Box"));
 
         $("#userName").setValue("Alexey Egorov");
         $("#userEmail").setValue("petrovich@mail.com");
@@ -30,5 +30,7 @@ public class TextBoxTests {
         $("#submit").click();
 
         $("#output").shouldBe(visible);
+        $("#output").$("#name").shouldHave(text("Alexey Egorov"));
+        $("#output").$("#email").shouldHave(text("petrovich@mail.com"));
     }
 }
