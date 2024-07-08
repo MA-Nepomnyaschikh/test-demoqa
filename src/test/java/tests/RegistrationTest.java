@@ -19,7 +19,6 @@ public class RegistrationTest {
     void fillFormTest() {
         open("/automation-practice-form");
         $(".text-center").shouldHave(text("Practice form"));
-
         $("#firstName").setValue("Alexey");
         $("#lastName").setValue("Egorov");
         $("#userEmail").setValue("aegorov@mail.com");
@@ -28,7 +27,8 @@ public class RegistrationTest {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__year-select").selectOption("1998");
-        $(".react-datepicker__day--030:not(react-datepicker__day--outside-month)").click();
+        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
+        //$x("//*[@class='react-datepicker__day--030'][not(contains(@class, 'react-datepicker__day--outside-month'))]").click();
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $("#hobbies-checkbox-1").parent().click();
         $("#uploadPicture").uploadFromClasspath("cat.png");
@@ -36,7 +36,6 @@ public class RegistrationTest {
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
         $("#submit").click();
-
         $(".modal-content").should(appear);
         $x("//tbody/tr[1]/td[2]").shouldHave(text("Alexey Egorov"));
     }

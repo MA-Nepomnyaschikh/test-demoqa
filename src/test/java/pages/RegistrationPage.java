@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.checkerframework.checker.units.qual.C;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
 
@@ -22,7 +21,14 @@ public class RegistrationPage {
             dateOfBirthInput = $("#dateOfBirthInput"),
             emailInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
-            phoneInput = $("#userNumber");
+            phoneInput = $("#userNumber"),
+            subjectInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            pictureInput = $("#uploadPicture"),
+            addressInput = $("#currentAddress"),
+            stateInput = $("#react-select-3-input"),
+            cityInput = $("#react-select-4-input"),
+            submitButton = $("#submit");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -66,6 +72,45 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage setSubject(String... subjects) {
+        for (String subject : subjects) {
+            subjectInput.setValue(subject).pressEnter();
+        }
+        return this;
+    }
+
+    public RegistrationPage setHobbies(String... hobbies) {
+        for (String hobby : hobbies) {
+            hobbiesInput.$(byText(hobby)).click();
+        }
+        return this;
+    }
+
+    public RegistrationPage uploadPicture(String value) {
+        pictureInput.uploadFromClasspath(value);
+        return this;
+    }
+
+    public RegistrationPage setAddress(String value) {
+        addressInput.setValue(value);
+        return this;
+    }
+
+    public RegistrationPage setState(String value) {
+        stateInput.setValue(value).pressEnter();
+        return this;
+    }
+
+    public RegistrationPage setCity(String value) {
+        cityInput.setValue(value).pressEnter();
+        return this;
+    }
+
+    public RegistrationPage clickOnSubmitButton() {
+        submitButton.click();
+        return this;
+    }
+
     public RegistrationPage verifyResultModalAppears() {
         registrationResultsModal.verifyModalAppears();
         return this;
@@ -75,4 +120,5 @@ public class RegistrationPage {
         registrationResultsModal.verifyResult(key, value);
         return this;
     }
+
 }
