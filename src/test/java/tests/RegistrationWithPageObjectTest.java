@@ -9,7 +9,7 @@ public class RegistrationWithPageObjectTest extends BaseTest {
     String email = "aegorov@mail.com";
     String gender = "Male";
     String phone = "9090909090";
-    String[] dayOfBirthday = {"30", "July", "1998"};
+    String[] Birthday = {"30", "July", "1998"};
     String subject = "Chemistry";
     String hobbies = "Sports";
     String fileName = "cat.png";
@@ -26,7 +26,7 @@ public class RegistrationWithPageObjectTest extends BaseTest {
                         .setEmail(email)
                         .setGender(gender)
                         .setPhone(phone)
-                        .setBirthday(dayOfBirthday[0], dayOfBirthday[1], dayOfBirthday[2])
+                        .setBirthday(Birthday[0], Birthday[1], Birthday[2])
                         .setSubject(subject)
                         .setHobbies(hobbies)
                         .uploadPicture(fileName)
@@ -39,7 +39,7 @@ public class RegistrationWithPageObjectTest extends BaseTest {
                         .verifyResult("Student Email", email)
                         .verifyResult("Gender", gender)
                         .verifyResult("Mobile", phone)
-                        .verifyResult("Date of Birth", dayOfBirthday[0] + " " + dayOfBirthday[1] + "," + dayOfBirthday[2])
+                        .verifyResult("Date of Birth", Birthday[0] + " " + Birthday[1] + "," + Birthday[2])
                         .verifyResult("Subjects", subject)
                         .verifyResult("Hobbies", hobbies)
                         .verifyResult("Picture", fileName)
